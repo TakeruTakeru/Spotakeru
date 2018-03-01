@@ -1,9 +1,20 @@
 {% extends "chat/home.html" %}
 
 {% block content %}
-<h1> New Post</h1>
+
+<div align="center"><h1> New Post</h1>
+<p>アーティストネームとトラックにはそれぞれ名前を入れます。*自由に名前を設定できます。</p>
+<p>アーティストオーディオには開いてほしい１曲を入れます。spotifyからコピーしてください。</p>
+<p>アーティストURLにはアーティストのページを指定できます。</p>
+<p>writerには書いた人の名前を入れます。</p>
+<br />
+
 <form method="Post" class="post-form">{% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="save btn btn-default">Save</button>
 </form>
+
+<p>*全部記入しないと怒られます。。。</p>
+</div>
+
 {% endblock %}

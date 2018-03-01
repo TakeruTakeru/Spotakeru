@@ -6,7 +6,7 @@ from .forms import PostForm
 
 # Create your views here.
 def post_list(request):
-    posts = Basic_data.objects.filter(published_date__lte=timezone.now()).order_by("published_date")
+    posts = Basic_data.objects.filter(published_date__lte=timezone.now()).order_by("-published_date")
     return render(request, "chat/index.html", {"posts": posts})
 
 def post_detail(request, pk):
@@ -24,3 +24,6 @@ def post_make(request):
     else:
         form = PostForm()
     return render(request, "chat/post.html", {"form": form})
+
+def check_spotify(request):
+    pass

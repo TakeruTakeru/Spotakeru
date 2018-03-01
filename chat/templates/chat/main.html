@@ -6,21 +6,16 @@
             <div class="date">
                 {{ post.published_date }}
             </div>
+        </div>
         {% endif %}
-        <h1>{{ post.place_name }}</h1>
-        <p>{{ post.info|linebreaks }}</p>
-    </div>
-  <h4>地域: {{ post.religion }}</h4>
-  <h4>旅費　{{ post.travel_expenses }} 円</h4>
-  <h4>滞在費 {{ post.hotel_expenses }} 円</h4></br >
+        <div align="center"><h1>{{ post.artist_name }}</h1>
 
-  <h4>施設、イベントなど</h4>
-  <ul>
-  <p>{% for  additional_data in basic_data.additional_data_set.all %}
-        <li>{{ additional_data.facilities }}</p></li>
-
-</ul>
+  <h4>track: {{ post.artist_track }}</h4>
+  <a href="{{ post.artist_audio }}" target="_blank">
+  <h4>audio:　{{ post.artist_audio }}</h4></a>
+  <a href="{{ post.artist_url }}" target="_blank">
+  <h4>artist url: {{ post.artist_url }}</h4></a></br >
+</div>
 </br >
-  {% endfor %}
 
 {% endblock %}
