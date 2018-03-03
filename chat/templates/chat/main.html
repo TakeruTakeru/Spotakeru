@@ -1,6 +1,7 @@
 {% extends "chat/home.html" %}
 
 {% block content %}
+{% load static %}
     <div class="post">
         {% if post.published_date %}
             <div class="date">
@@ -14,7 +15,8 @@
   <br />
   <h4>Request Track</h4>
   <a href="{{ post.artist_audio }}" target="_blank">
-  <h4>{{ post.artist_audio }}</h4></a>
+    <img src="{% static 'chat/img/spotify.jpg' %}" class="responsive-img" style='max-height:200px;' alt="face"></a>
+    <br />
     <h4>Artist Page</h4>
   <a href="{{ post.artist_url }}" target="_blank">
   <h4>{{ post.artist_url }}</h4></a></br >
