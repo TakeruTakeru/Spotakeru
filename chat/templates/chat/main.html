@@ -10,11 +10,14 @@
         {% endif %}
         <div align="center"><h1>{{ post.artist_name }}</h1>
 
-  <h4>track: {{ post.artist_track }}</h4>
+  <h4>track {{ post.artist_track }}</h4>
+  <br />
+  <h4>Request Track</h4>
   <a href="{{ post.artist_audio }}" target="_blank">
-  <h4>audio:　{{ post.artist_audio }}</h4></a>
+  <h4>{{ post.artist_audio }}</h4></a>
+    <h4>Artist Page</h4>
   <a href="{{ post.artist_url }}" target="_blank">
-  <h4>artist url: {{ post.artist_url }}</h4></a></br >
+  <h4>{{ post.artist_url }}</h4></a></br >
 </div>
 </br >
 
