@@ -3,10 +3,22 @@ from .models import Basic_data
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
+from django.core.paginator import Paginator, InvalidPage
 
 # Create your views here.
 def post_list(request):
     posts = Basic_data.objects.filter(published_date__lte=timezone.now()).order_by("-published_date")
+    paginator = Paginator(posts, 5)
+
+    try:
+        page = int(request.GET.get("page", 1))
+    except ValuError:
+        page = 1
+    try:
+        posts= paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        posts = paginate.page(paginator.num_pages)
+
     return render(request, "chat/index.html", {"posts": posts})
 
 def post_detail(request, pk):
