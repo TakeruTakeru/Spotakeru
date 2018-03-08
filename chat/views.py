@@ -1,24 +1,14 @@
+
 from django.shortcuts import render, redirect
 from .models import Basic_data
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
-from django.core.paginator import Paginator, InvalidPage
+from .spotipy.tracks import Spotakeru
 
 # Create your views here.
 def post_list(request):
     posts = Basic_data.objects.filter(published_date__lte=timezone.now()).order_by("-published_date")
-    paginator = Paginator(posts, 5)
-
-    try:
-        page = int(request.GET.get("page", 1))
-    except ValuError:
-        page = 1
-    try:
-        posts= paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        posts = paginate.page(paginator.num_pages)
-
     return render(request, "chat/index.html", {"posts": posts})
 
 def post_detail(request, pk):
@@ -38,4 +28,19 @@ def post_make(request):
     return render(request, "chat/post.html", {"form": form})
 
 def check_spotify(request):
-    pass
+    artist_name = request.GET.get('name')
+    artist_name = str(artist_name)
+    result = Spotakeru.search(artist_name)
+
+    artist_list = []
+    url_list = []
+    for i in result["artists"]["items"]:
+        artist_list.append(i["name"])
+        url_list.append(i["external_urls"]["spotify"])
+
+    add_list = [k + ": " + v for k, v in zip(artist_list, url_list)]
+    artist_dict = {
+        "names": add_list,
+    }
+
+    return render(request, 'chat/check_spotify.html', artist_dict)

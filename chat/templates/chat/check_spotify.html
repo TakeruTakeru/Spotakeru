@@ -1,0 +1,11 @@
+{% extends "chat/home.html" %}
+{% block content %}
+<form action="" method="get">
+  <label>namae<input type="text" size="20" name="name"></label>
+  <input type="submit" value="send">
+</form>
+
+{% for name in names %}
+{{ name|urlizetrunc:24 }}<br />
+{% endfor %}
+{% endblock %}
