@@ -1,10 +1,19 @@
 {% extends "chat/home.html" %}
 {% block content %}
-<form action="" method="get">
-  <label>namae<input type="text" size="20" name="name"></label>
+<div class="sentense" align="center">
+  <h1>spotify searcher</h1>
+  <p>好きなアーティストの名前を入れてください。</p>
+  <p>spotifyの仕様上アーティスト名が英語だったり日本語だったりします。</p>
+  <p>日本語でのヒットがあまり良くないのでローマ字をお勧めします。</p>
+</div>
+
+<br />
+<form action="" method="get" align="center">
+  <label>search artists,<input type="text" size="20" name="name">in spotify!!</label>
   <input type="submit" value="send">
 </form>
 
+<br />
 {% for name in names %}
 {{ name|urlizetrunc:24 }}<br />
 {% endfor %}
