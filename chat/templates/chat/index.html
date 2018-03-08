@@ -1,10 +1,8 @@
-
 {% extends "chat/home.html" %}
 {% block content %}
 {% load static %}
 
 {% for post in posts %}
-
 <div class="post">
   <div class="date">
     {{ post.published_date }}
@@ -15,39 +13,37 @@
   <img src="{% static 'chat/img/spotify.jpg'%}" class="responsive-img" style='max-height:100px;' alt="face"></a>
   <br ></div>
   <h4><div align="right">WRITER: {{post.writer}}</div></h4>
+  {% endfor %}
 
-{% endfor %}
+  <br />
 
-<br />
-
-<div align="center" style="color:#228b22">
+<span>
   {% if posts.has_previous %}
-  {% ifnotequal previous_page_number 1%}
+  {% ifnotequal previous_page_number 1 %}
   <a href="?page=1">First</a>
   {% endifnotequal %}
   {% endif %}
 
-  {% if entry.has_previous %}
-  <a href="?page={{ posts.previous_page_number }}">previous</a>
+  {% if posts.has_previous %}
+  <a href="?page={{ entry.previous_page_number }}">Previous</a>
   {% endif %}
 
   {% for num in posts.paginator.page_range %}
-  {% ifequal num posts.number %}
+  {% ifequal num entry.number %}
   <span class="current page">{{ num }}</span>
   {% else %}
-  <a href="?page={{ num }}">{{ num }}</a>
+  <a href="?page={{ num }}"> {{ num }}</a>
   {% endifequal %}
   {% endfor %}
 
   {% if posts.has_next %}
-  <a href="?page={{ posts.next_page_number }}">Next</a>
+  <a href="?page={{ entry.next_page_number }}"> Next </a>
   {% endif %}
 
   {% if posts.has_next %}
-  {% ifnotequal next_page_number posts.paginator.num_pages %}
-  <a href="?page={{ posts.paginator.num_pages }}">Last</a>
-  {% endifnotequal%}
+  {% ifnotequal next_page_number entry.paginator.num_pages %}
+  <a href="?page={{ entry.paginator.num_pages }}">Last</a>
+  {% endifnotequal %}
   {% endif %}
-</div>
-<br />
+</span>
 {% endblock %}
