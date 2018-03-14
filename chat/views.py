@@ -42,7 +42,8 @@ def post_make(request):
 def check_spotify(request):
     artist_name = request.GET.get('name')
     artist_name = str(artist_name)
-    result = Spotakeru.search(artist_name)
+    spotify = Spotakeru()
+    result = spotify.search(artist_name)
 
     artist_list = []
     url_list = []
