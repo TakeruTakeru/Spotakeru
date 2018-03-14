@@ -4,7 +4,7 @@ from .models import Basic_data
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
-from .spotipy.tracks import Spotakeru
+from .tracks import Spotakeru
 from django.core.paginator import Paginator, InvalidPage
 # Create your views here.
 def post_list(request):
@@ -50,9 +50,14 @@ def check_spotify(request):
         artist_list.append(i["name"])
         url_list.append(i["external_urls"]["spotify"])
 
+    image_list = []
+    for i in result["artists"]["items"]:
+        image_list.append[i["images"][0]["url"]]
+
+
     add_list = [k + ": " + v for k, v in zip(artist_list, url_list)]
     artist_dict = {
         "names": add_list,
-    }
+        }
 
     return render(request, 'chat/check_spotify.html', artist_dict)

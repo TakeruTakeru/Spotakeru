@@ -3,4 +3,4 @@ __pycache__
 static
 local_settings.py
 db.sqlite3
-*.py[co]
+.DS_Store
