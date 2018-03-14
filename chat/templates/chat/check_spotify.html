@@ -17,11 +17,12 @@
 {% for name in names %}
 {{ name|urlizetrunc:24 }}<br />
 {% endfor %}
-{% ifnot names %}
+{% if not names %}
 <p>no artists has been found.</p>
 please try search like this,<br />
 ブルーノマーズ→ブルーノ・マーズ、マシュマロ→マシュメロ、
 {% endif %}
+
 
 <h3><a href="https://www.spotify.com/jp/">本家</a>
 <h6>このサイトは分家です...</h6>

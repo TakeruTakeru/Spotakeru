@@ -51,9 +51,9 @@ def check_spotify(request):
         artist_list.append(i["name"])
         url_list.append(i["external_urls"]["spotify"])
 
-    image_list = []
-    for i in result["artists"]["items"]:
-        image_list.append[i["images"][0]["url"]]
+    #image_list = []
+    #for i in result["artists"]["items"]:
+        #image_list.append[i["images"][0]["url"]]
 
 
     add_list = [k + ": " + v for k, v in zip(artist_list, url_list)]
